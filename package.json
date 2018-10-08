@@ -1,0 +1,24 @@
+{
+  "name": "stock-search-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "scss": "node-sass --watch . -o css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Huhspaniel/stock-search-app.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Huhspaniel/stock-search-app/issues"
+  },
+  "homepage": "https://github.com/Huhspaniel/stock-search-app#readme",
+  "dependencies": {
+    "node-sass": "^4.9.3"
+  }
+}
