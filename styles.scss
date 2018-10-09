@@ -61,8 +61,8 @@ header {
     flex-wrap: wrap;
     justify-content: center;
     button {
-        width: calc(86% / 7);
-        margin: 5px 1%;
+        width: 90px;
+        margin: 3px 3px;
 
         background-color: #fafafa;
         border: 2px outset #fafafa;
@@ -70,8 +70,7 @@ header {
         color: #353535;
         font-size: 14px;
         letter-spacing: 1px;
-        // text-shadow: 1px 1px 2px black;
-        padding: 4px;
+        padding: 6px 0;
         &:active {
             border-style: inset;
             background-color: #f0f0f0
@@ -119,8 +118,7 @@ main {
 
 .new-symbol {
     display: flex;
-    justify-content: flex-end;
-    margin: 10px;
+    margin: 10px 0;
     input {
         font-size: 18px;
         width: 100px;
