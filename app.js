@@ -8,9 +8,8 @@ let validationList;
     xhr.send();
 }
 
-const stockList = ['AAPL', 'TSLA', 'MSFT', 'FB'];
 const btnsDiv = document.querySelector('.stock-btns');
-
+const stockList = ['AAPL', 'TSLA', 'MSFT', 'FB'];
 function renderBtns() {
     btnsDiv.innerHTML = '';
     var btn;
@@ -35,19 +34,17 @@ function clearStockInfo() {
     priceContainer.innerHTML = '';
     newsContainer.innerHTML = '';
 }
-function updateStockInfo(symbol) {
+function renderStockInfo(symbol) {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', `https://api.iextrading.com/1.0/stock/${symbol}/batch?types=quote,logo,price,news&last=10`);
     xhr.onload = function() {
-        clearStockInfo();
         const data = JSON.parse(xhr.response);
-
+        clearStockInfo();
         nameContainer.innerHTML = data.quote.companyName;
         logoContainer.setAttribute('src', data.logo.url);
         priceContainer.innerHTML = data.price + ' (USD)';
         let articleContainer;
-        for (let article in data.news) {
-            article = data.news[article];
+        for (let article of data.news) {
             articleContainer = document.createElement('div');
             articleContainer.setAttribute('class', 'article');
             articleContainer.innerHTML =
@@ -63,7 +60,7 @@ function updateStockInfo(symbol) {
 btnsDiv.addEventListener('click', (event) => {
     const target = event.target;
     if (target.matches('button')) {
-        updateStockInfo(target.textContent);
+        renderStockInfo(target.textContent);
     }
 });
 
@@ -73,8 +70,8 @@ symbolInput.addEventListener('keyup', (e) => {
         const newSymbol = e.target.value.toUpperCase();
         e.target.value = '';
         if (!stockList.includes(newSymbol)) {
-            for (let i = 0; i < validationList.length; i++) {
-                if (newSymbol === validationList[i].symbol) {
+            for (let data of validationList) {
+                if (newSymbol === data.symbol) {
                     stockList.push(newSymbol);
                     renderBtns();
                     return;
