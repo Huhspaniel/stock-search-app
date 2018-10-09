@@ -2,7 +2,7 @@ const stockList = ['AAPL', 'TSLA', 'MSFT'];
 
 function getStockInfo(symbol) {
     var xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.iextrading.com/1.0/stock/${symbol}/quote`);
+    xhr.open('GET', `https://api.iextrading.com/1.0/stock/${symbol}/batch?types=quote,logo,price,news&last=10`);
     xhr.onload = function() {
         var data = JSON.parse(xhr.responseText);
         console.log(data);
