@@ -101,9 +101,14 @@ main {
     width: 100px;
     padding: 5px;
     border: 2px inset rgba(54, 79, 99, 0.5); }
-    .new-symbol input:focus {
-      outline: none;
-      box-shadow: 0 0 10px black; }
+  .new-symbol button {
+    border: 2px outset rgba(54, 79, 99, 0.5); }
+    .new-symbol button:active {
+      background-color: #f0f0f0;
+      border-style: inset; }
+  .new-symbol *:focus {
+    outline: none;
+    box-shadow: 0 0 10px black; }
 
 footer {
   background-color: #364f63;

@@ -1,9 +1,10 @@
+let validationList;
 {
     const xhr = new XMLHttpRequest();
     xhr.open('GET', 'https://api.iextrading.com/1.0/ref-data/symbols');
     xhr.onload = function() {
-        symbolsList = JSON.parse(xhr.response);
-        console.log(symbolsList);
+        validationList = JSON.parse(xhr.response);
+        console.log(validationList);
     }
     xhr.send();
 }
@@ -69,18 +70,23 @@ btnsDiv.addEventListener('click', (event) => {
     }
 });
 
-document.querySelector('.new-symbol input').addEventListener('keyup', (e) => {
+const symbolInput = document.querySelector('.new-symbol input');
+symbolInput.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') {
         const newSymbol = e.target.value.toUpperCase();
         e.target.value = '';
         if (!stockList.includes(newSymbol)) {
-            for (let i = 0; i < symbolsList.length; i++) {
-                if (newSymbol === symbolsList[i].symbol) {
+            for (let i = 0; i < validationList.length; i++) {
+                if (newSymbol === validationList[i].symbol) {
                     stockList.push(newSymbol);
                     renderBtns();
                     return;
                 }
             }
         }
-    }    
+    }
+});
+document.querySelector('.new-symbol button').addEventListener('click', () => {
+    const keyUp = new KeyboardEvent('keyup', { key: "Enter" });
+    symbolInput.dispatchEvent(keyUp);
 });

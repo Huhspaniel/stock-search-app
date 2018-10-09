@@ -64,8 +64,8 @@ header {
         width: calc(86% / 7);
         margin: 5px 1%;
 
-        background-color: rgb(250, 250, 250);
-        border: 2px outset rgb(250, 250, 250);
+        background-color: #fafafa;
+        border: 2px outset #fafafa;
         border-radius: 5px;
         color: #353535;
         font-size: 14px;
@@ -74,7 +74,7 @@ header {
         padding: 4px;
         &:active {
             border-style: inset;
-            background-color: rgb(240, 240, 240)
+            background-color: #f0f0f0
         }
         &:focus {
             outline: none;
@@ -126,10 +126,17 @@ main {
         width: 100px;
         padding: 5px;
         border: 2px inset rgba(54, 79, 99, 0.5);
-        &:focus {
-            outline: none;
-            box-shadow: 0 0 10px black;
+    }
+    button {
+        border: 2px outset rgba(54, 79, 99, 0.5);
+        &:active {
+            background-color: #f0f0f0;
+            border-style: inset;
         }
+    }
+    *:focus {
+        outline: none;
+        box-shadow: 0 0 10px black;
     }
 }
 
