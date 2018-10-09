@@ -4,7 +4,6 @@ let validationList;
     xhr.open('GET', 'https://api.iextrading.com/1.0/ref-data/symbols');
     xhr.onload = function() {
         validationList = JSON.parse(xhr.response);
-        console.log(validationList);
     }
     xhr.send();
 }
@@ -42,13 +41,11 @@ function updateStockInfo(symbol) {
     xhr.onload = function() {
         clearStockInfo();
         const data = JSON.parse(xhr.response);
-        console.log(data);
 
         nameContainer.innerHTML = data.quote.companyName;
         logoContainer.setAttribute('src', data.logo.url);
         priceContainer.innerHTML = data.price + ' (USD)';
         let articleContainer;
-        console.log(data.news);
         for (let article in data.news) {
             article = data.news[article];
             articleContainer = document.createElement('div');
