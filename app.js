@@ -1,18 +1,18 @@
-const stockList = ['AAPL', 'TSLA', 'MSFT', 'FB'];
-
-const infoContainer = document.querySelector('.stock-info');
-function getStockInfo(symbol) {
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', `https://api.iextrading.com/1.0/stock/${symbol}/batch?types=quote,logo,price,news&last=10`);
+{
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://api.iextrading.com/1.0/ref-data/symbols');
     xhr.onload = function() {
-        const data = JSON.parse(xhr.responseText);
-        console.log(data);
-    };
+        symbolsList = JSON.parse(xhr.response);
+        console.log(symbolsList);
+    }
     xhr.send();
 }
 
+const stockList = ['AAPL', 'TSLA', 'MSFT', 'FB'];
 const btnsDiv = document.querySelector('.stock-btns');
+
 function renderBtns() {
+    btnsDiv.innerHTML = '';
     var btn;
     for (const stock of stockList) {
         btn = document.createElement('button');
@@ -24,9 +24,63 @@ function renderBtns() {
 }
 renderBtns();
 
+const infoContainer = document.querySelector('.stock-info');
+const nameContainer = document.querySelector('.company-name');
+const logoContainer = document.querySelector('.logo');
+const priceContainer = document.querySelector('.price');
+const newsContainer = document.querySelector('.news');
+function clearStockInfo() {
+    nameContainer.innerHTML = '';
+    logoContainer.setAttribute('src', '');
+    priceContainer.innerHTML = '';
+    newsContainer.innerHTML = '';
+}
+function updateStockInfo(symbol) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', `https://api.iextrading.com/1.0/stock/${symbol}/batch?types=quote,logo,price,news&last=10`);
+    xhr.onload = function() {
+        clearStockInfo();
+        const data = JSON.parse(xhr.response);
+        console.log(data);
+
+        nameContainer.innerHTML = data.quote.companyName;
+        logoContainer.setAttribute('src', data.logo.url);
+        priceContainer.innerHTML = data.price + ' (USD)';
+        let articleContainer;
+        console.log(data.news);
+        for (let article in data.news) {
+            article = data.news[article];
+            articleContainer = document.createElement('div');
+            articleContainer.setAttribute('class', 'article');
+            articleContainer.innerHTML =
+                `<h4><a href='${article.url}'>${article.headline}</a></h4>` +
+                `<p>${article.summary}</p>`;
+            newsContainer.appendChild(articleContainer);
+        }
+        infoContainer.style.display = 'flex';
+    };
+    xhr.send();
+}
+
 btnsDiv.addEventListener('click', (event) => {
     const target = event.target;
     if (target.matches('button')) {
-        getStockInfo(target.textContent);
+        updateStockInfo(target.textContent);
     }
+});
+
+document.querySelector('.new-symbol input').addEventListener('keyup', (e) => {
+    if (e.key === 'Enter') {
+        const newSymbol = e.target.value.toUpperCase();
+        e.target.value = '';
+        if (!stockList.includes(newSymbol)) {
+            for (let i = 0; i < symbolsList.length; i++) {
+                if (newSymbol === symbolsList[i].symbol) {
+                    stockList.push(newSymbol);
+                    renderBtns();
+                    return;
+                }
+            }
+        }
+    }    
 });

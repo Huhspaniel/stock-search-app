@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,20 +11,28 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/styles.css">
 </head>
+
 <body>
     <header>
         <h1>Stock Search</h1>
         <div class="stock-btns"></div>
     </header>
-    <main class="stock-info">
-        <header>
-            <img src="https://techflourish.com/images/apple-black-clipart-8.png" alt="company logo" class="logo">
-            <h2 class="company-name">Apple Inc.</h2>
-        </header>
-        <h3 class="price">$100</h3>
-        <div class="news"></div>
+    <div class="new-symbol">
+        <h4>Add symbol:</h4>
+        <input type="text">
+    </div>
+    <main>
+        <div class="stock-info">
+            <div class="info-header">
+                <img class="logo" alt="no logo">
+                <h2 class="company-name"></h2>
+            </div>
+            <h3 class="price">$100</h3>
+            <div class="news"></div>
+        </div>
     </main>
     <footer>Copyright ©</footer>
 </body>
-    <script src="app.js"></script>
+<script src="app.js"></script>
+
 </html>
