@@ -1,6 +1,6 @@
 body {
   min-height: 100vh;
-  max-width: 100vh;
+  max-width: 100vw;
   background-color: #fafafa;
   color: #353535;
   font-size: 17px;
