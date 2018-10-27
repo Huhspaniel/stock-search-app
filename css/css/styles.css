@@ -7,8 +7,9 @@ body {
   font-family: 'Bai Jamjuree', sans-serif;
   display: flex;
   flex-direction: column; }
-  body * {
-    max-width: 100%; }
+
+body * {
+  max-width: 100%; }
 
 h1 {
   font-size: 40px;
@@ -46,22 +47,25 @@ header {
   display: flex;
   flex-wrap: wrap;
   justify-content: center; }
-  .stock-btns button {
-    width: 90px;
-    margin: 3px 3px;
-    background-color: #fafafa;
-    border: 2px outset #fafafa;
-    border-radius: 5px;
-    color: #353535;
-    font-size: 14px;
-    letter-spacing: 1px;
-    padding: 6px 0; }
-    .stock-btns button:active {
-      border-style: inset;
-      background-color: #f0f0f0; }
-    .stock-btns button:focus {
-      outline: none;
-      box-shadow: 0 0 10px white; }
+
+.stock-btns button {
+  width: 90px;
+  margin: 3px 3px;
+  background-color: #fafafa;
+  border: 2px outset #fafafa;
+  border-radius: 5px;
+  color: #353535;
+  font-size: 14px;
+  letter-spacing: 1px;
+  padding: 6px 0; }
+
+.stock-btns button:active {
+  border-style: inset;
+  background-color: #f0f0f0; }
+
+.stock-btns button:focus {
+  outline: none;
+  box-shadow: 0 0 10px white; }
 
 main {
   flex: 1;
@@ -78,35 +82,42 @@ main {
   box-shadow: 0 0 3px black;
   width: 850px;
   margin: 0 0 40px; }
-  .stock-info .info-header {
-    background-color: inherit;
-    color: inherit;
-    border-bottom: 1px solid black;
-    border-radius: 5px 5px 0 0;
-    display: flex;
-    align-items: center;
-    padding: 10px; }
-    .stock-info .info-header img {
-      width: 65px; }
-  .stock-info .price {
-    align-self: flex-end; }
+
+.stock-info .info-header {
+  background-color: inherit;
+  color: inherit;
+  border-bottom: 1px solid black;
+  border-radius: 5px 5px 0 0;
+  display: flex;
+  align-items: center;
+  padding: 10px; }
+
+.stock-info .info-header img {
+  width: 65px; }
+
+.stock-info .price {
+  align-self: flex-end; }
 
 .new-symbol {
   display: flex;
   margin: 10px 0; }
-  .new-symbol input {
-    font-size: 18px;
-    width: 100px;
-    padding: 5px;
-    border: 2px inset rgba(54, 79, 99, 0.5); }
-  .new-symbol button {
-    border: 2px outset rgba(54, 79, 99, 0.5); }
-    .new-symbol button:active {
-      background-color: #f0f0f0;
-      border-style: inset; }
-  .new-symbol *:focus {
-    outline: none;
-    box-shadow: 0 0 10px black; }
+
+.new-symbol input {
+  font-size: 18px;
+  width: 100px;
+  padding: 5px;
+  border: 2px inset rgba(54, 79, 99, 0.5); }
+
+.new-symbol button {
+  border: 2px outset rgba(54, 79, 99, 0.5); }
+
+.new-symbol button:active {
+  background-color: #f0f0f0;
+  border-style: inset; }
+
+.new-symbol *:focus {
+  outline: none;
+  box-shadow: 0 0 10px black; }
 
 footer {
   background-color: #364f63;

@@ -1,9 +1,6 @@
-html {
-    height: 100%;
-}
-
 body {
-    min-height: 100%;
+    min-height: 100vh;
+    max-width: 100vh;
     background-color: #fafafa;
     color: #353535;
     font-size: 17px;
@@ -52,6 +49,7 @@ header {
 }
 
 .stock-btns {
+    box-sizing: border-box;
     width: 700px;
     padding: 20px;
     border-top: 2px solid #fafafa;
